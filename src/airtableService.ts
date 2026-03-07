@@ -346,12 +346,12 @@ export class AirtableService implements IAirtableService {
 		workspaceId: string,
 		name: string,
 		tables: Array<{name: string; description?: string | undefined; fields: Array<{name: string; type: string; description?: string | undefined; options?: Record<string, unknown> | undefined}>}>,
-	): Promise<{id: string; name: string; tables: Array<{id: string; name: string; fields: Array<{id: string; name: string; type: string}>}>}> {
+	): Promise<{id: string; name?: string; tables: Array<{id: string; name: string; fields: Array<{id: string; name: string; type: string}>}>}> {
 		return this.fetchFromAPI(
 			'/v0/meta/bases',
 			z.object({
 				id: z.string(),
-				name: z.string(),
+				name: z.string().optional(),
 				tables: z.array(z.object({
 					id: z.string(),
 					name: z.string(),

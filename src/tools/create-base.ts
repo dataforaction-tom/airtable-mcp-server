@@ -19,7 +19,7 @@ const tableDefinitionSchema = z.object({
 
 const outputSchema = z.object({
 	id: z.string(),
-	name: z.string(),
+	name: z.string().optional(),
 	tables: z.array(z.object({
 		id: z.string(),
 		name: z.string(),
