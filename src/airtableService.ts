@@ -497,7 +497,7 @@ export class AirtableService implements IAirtableService {
 		}
 
 		try {
-			const data = JSON.parse(responseText);
+			const data = responseText ? JSON.parse(responseText) : undefined;
 			return schema.parse(data);
 		} catch (parseError) {
 			throw new Error(`Failed to parse API response: ${parseError instanceof Error ? parseError.message : String(parseError)}`);
